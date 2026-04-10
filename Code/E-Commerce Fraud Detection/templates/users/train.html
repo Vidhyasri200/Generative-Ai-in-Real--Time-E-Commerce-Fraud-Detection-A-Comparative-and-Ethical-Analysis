@@ -1,0 +1,39 @@
+{% extends 'users/Userbase.html' %}
+
+{% block content %}
+
+<div class="p-3">
+
+<h3 class="text-center text-success">🤖 Fraud Detection Model Training</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="text-center">
+        <button class="btn btn-primary">Start Training</button>
+    </div>
+</form>
+
+<hr>
+
+{% if accuracy %}
+
+<div class="alert alert-success">
+    <b>Model Accuracy:</b> {{ accuracy }}
+</div>
+
+<div class="card p-3 bg-light mt-3">
+    <h5 class="text-danger">Classification Report</h5>
+    <pre>{{ report }}</pre>
+</div>
+
+<h4 class="mt-4">📊 Confusion Matrix</h4>
+<img src="/media/{{ confusion_img }}" class="img-fluid">
+
+<h4 class="mt-4">📉 Model Comparison Chart</h4>
+<img src="/media/{{ compare_img }}" class="img-fluid">
+
+{% endif %}
+
+</div>
+
+{% endblock %}

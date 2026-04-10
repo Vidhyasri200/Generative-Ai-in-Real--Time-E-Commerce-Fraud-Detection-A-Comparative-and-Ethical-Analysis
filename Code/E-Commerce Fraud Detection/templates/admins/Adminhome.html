@@ -1,0 +1,81 @@
+{% extends 'admins/Adminbase.html' %}
+
+{% block content %}
+<style>
+    .user-dashboard {
+        background: rgba(27, 38, 59, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        max-width: 800px;
+        margin: 2rem auto;
+        text-align: center;
+    }
+
+    .user-dashboard h2 {
+        color: #00d4ff;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    }
+
+    .user-dashboard p {
+        color: #b0c4de;
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+
+    .user-dashboard .btn {
+        display: inline-block;
+        margin: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        background-color: #00d4ff;
+        color: #0d1b2a;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .user-dashboard .btn:hover {
+        background-color: #b0c4de;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .user-dashboard {
+            padding: 1.5rem;
+        }
+
+        .user-dashboard h2 {
+            font-size: 1.8rem;
+        }
+
+        .user-dashboard p {
+            font-size: 1rem;
+        }
+
+        .user-dashboard .btn {
+            width: 100%;
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .user-dashboard h2 {
+            font-size: 1.6rem;
+        }
+
+        .user-dashboard p {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+<div class="user-dashboard">
+    <h2>Welcome, {{ request.session.loggeduser }}</h2>
+    <p>Manage and monitor ecommerce transactions to detect and prevent fraudulent activities with our advanced tools.</p>
+    <a href="{% url 'UserLogin' %}" class="btn">Logout</a>
+</div>
+{% endblock %}

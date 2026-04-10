@@ -1,0 +1,25 @@
+<!-- {% extends 'users/Userbase.html' %}
+
+{% block content %}
+<div class="card shadow p-4">
+    <h3 class="text-primary mb-3 text-center">Brain Tumor Prediction Upload</h3>
+    <form method="post" enctype="multipart/form-data" class="row g-3">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label for="id_patient_name" class="form-label">Patient Name</label>
+            {{ form.patient_name }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_uploaded_mri" class="form-label">Upload MRI Image</label>
+            {{ form.uploaded_mri }}
+        </div>
+        <div class="col-md-6">
+            <label for="id_uploaded_pet" class="form-label">Upload PET Image</label>
+            {{ form.uploaded_pet }}
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success w-100">Submit for Prediction</button>
+        </div>
+    </form>
+</div>
+{% endblock %} -->

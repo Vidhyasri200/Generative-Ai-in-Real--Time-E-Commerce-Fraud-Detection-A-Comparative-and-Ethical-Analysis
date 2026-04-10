@@ -1,0 +1,136 @@
+{% extends 'users/Userbase.html' %}
+
+{% block content %}
+
+<div class="p-4">
+
+<h3 class="text-center text-warning mb-4">🧪 Predict Transaction Fraud Risk</h3>
+
+<hr class="mb-4">
+
+<style>
+.fraud-form-wrapper {
+    background: rgba(27, 38, 59, 0.95);
+    border-radius: 15px;
+    border: 2px solid #00d4ff;
+    box-shadow: 0 0 25px rgba(0,212,255,0.4);
+    padding: 2rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.fraud-input, .fraud-select {
+    background:#0d1b2a !important;
+    color:#e0e0e0 !important;
+    border:1px solid #00d4ff !important;
+    border-radius:8px;
+    padding:12px;
+}
+
+.fraud-btn {
+    background: linear-gradient(135deg, #00d4ff, #4b86b4);
+    color:#0d1b2a;
+    font-weight:700;
+    border:none;
+    border-radius:10px;
+    padding:12px 30px;
+    margin-top:20px;
+}
+
+.prediction-card {
+    background: rgba(13,27,42,0.98);
+    border-radius:12px;
+    border:2px solid #00d4ff;
+    padding:1.5rem;
+    margin-top:25px;
+    box-shadow: 0 0 20px rgba(0,212,255,0.3);
+}
+
+.fraud {
+    color: #ff4c4c;
+    font-weight: bold;
+}
+
+.safe {
+    color: #00ff99;
+    font-weight: bold;
+}
+
+.ai-box {
+    margin-top:15px;
+    padding:15px;
+    background:#081421;
+    border-left:5px solid #ffc107;
+    border-radius:8px;
+    text-align:left;
+    white-space: pre-line;
+}
+</style>
+
+<div class="fraud-form-wrapper">
+
+<h4 class="text-center text-info">🔍 Fraud Risk Detection Form</h4>
+
+<form method="post">
+{% csrf_token %}
+
+<div class="mb-3">
+<label>Amount</label>
+<input type="text" name="amount" class="form-control fraud-input" required>
+</div>
+
+<div class="mb-3">
+<label>Payment Method</label>
+<select name="method" class="form-control fraud-select">
+{% for m in methods %}
+<option value="{{ m }}">{{ m }}</option>
+{% endfor %}
+</select>
+</div>
+
+<div class="mb-3">
+<label>Location</label>
+<select name="location" class="form-control fraud-select">
+{% for l in locations %}
+<option value="{{ l }}">{{ l }}</option>
+{% endfor %}
+</select>
+</div>
+
+<div class="mb-3">
+<label>IP Address</label>
+<input type="text" name="ip" class="form-control fraud-input" required>
+</div>
+
+<div class="text-center">
+<button class="fraud-btn">Predict Fraud</button>
+</div>
+
+</form>
+</div>
+
+{% if prediction %}
+
+<div class="prediction-card text-center">
+
+<h5>🎯 Prediction Result</h5>
+
+{% if is_fraud %}
+<p class="fraud">{{ prediction }}</p>
+
+<div class="ai-box">
+<b>🧠 AI Explanation:</b><br>
+{{ ai_explanation }}
+</div>
+
+{% else %}
+<p class="safe">{{ prediction }}</p>
+{% endif %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+    <section class="intro">
+        <h2>Welcome to Ecommerce Fraud Detection</h2>
+        <p>Our advanced system leverages cutting-edge machine learning and real-time analytics to safeguard online transactions from fraudulent activities. Designed to protect businesses and customers, we ensure secure, seamless, and trustworthy ecommerce experiences.</p>
+    </section>
+    <section class="features">
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Real-Time Transaction Monitoring</strong>: Instantly detect suspicious patterns using AI-driven algorithms.</li>
+            <li><strong>Behavioral Analysis</strong>: Analyze user behavior to identify anomalies and prevent account takeovers.</li>
+            <li><strong>Automated Fraud Alerts</strong>: Receive immediate notifications for potential fraud with detailed insights.</li>
+            <li><strong>Secure Admin Dashboard</strong>: Manage and review flagged transactions with a user-friendly interface.</li>
+            <li><strong>Scalable Architecture</strong>: Built to handle high transaction volumes for small and large ecommerce platforms.</li>
+        </ul>
+    </section>
+    <section class="call-to-action">
+        <h3>Get Started</h3>
+        <p>Protect your ecommerce platform today. <a href="{% url 'register' %}" class="cta-button">Register Now</a> or <a href="{% url 'UserLoginCheck' %}" class="cta-button">Log In</a> to explore our fraud detection tools.</p>
+    </section>
+</div>
+
+<style>
+    .content {
+        padding: 2rem;
+        background: rgba(27, 38, 59, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        margin-bottom: 2rem;
+    }
+    .intro h2 {
+        color: #00d4ff;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+    }
+    .intro p {
+        font-size: 1.1rem;
+        color: #b0c4de;
+        margin-bottom: 2rem;
+    }
+    .features h3, .call-to-action h3 {
+        color: #00d4ff;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    .features ul {
+        list-style: none;
+        padding: 0;
+    }
+    .features ul li {
+        font-size: 1rem;
+        color: #e0e0e0;
+        margin-bottom: 0.8rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .features ul li:before {
+        content: '🔒';
+        position: absolute;
+        left: 0;
+        color: #00d4ff;
+    }
+    .call-to-action p {
+        font-size: 1.1rem;
+        color: #b0c4de;
+        margin-bottom: 1.5rem;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: #00d4ff;
+        color: #0d1b2a;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+        background-color: #b0c4de;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+        .content {
+            padding: 1.5rem;
+        }
+        .intro h2 {
+            font-size: 1.8rem;
+        }
+        .features h3, .call-to-action h3 {
+            font-size: 1.4rem;
+        }
+        .intro p, .call-to-action p {
+            font-size: 1rem;
+        }
+    }
+    @media (max-width: 480px) {
+        .intro h2 {
+            font-size: 1.5rem;
+        }
+        .features ul li {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+{% endblock %}

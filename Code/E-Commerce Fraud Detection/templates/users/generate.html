@@ -1,0 +1,33 @@
+{% extends 'users/Userbase.html' %}
+
+{% block content %}
+<h2 style="margin-top: 20px;">🤖 AI Discord Bot (Text + Image)</h2>
+
+<form method="post" enctype="multipart/form-data" style="margin-top: 20px;">
+    {% csrf_token %}
+
+    <label><strong>Text Prompt:</strong></label><br>
+    <textarea name="text_prompt" rows="4" cols="60" placeholder="Enter your prompt..."></textarea><br><br>
+
+    <label><strong>Image Prompt (optional):</strong></label><br>
+    <input type="file" name="image_prompt" accept="image/*"><br><br>
+
+    <button type="submit" style="padding: 8px 20px;">Generate</button>
+</form>
+
+{% if response_text %}
+    <div style="margin-top: 30px;">
+        <h3>🔍 AI Response:</h3>
+        <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+            {{ response_text }}
+        </div>
+    </div>
+{% endif %}
+
+{% if uploaded_image_url %}
+    <div style="margin-top: 30px;">
+        <h4>🖼️ Uploaded Image:</h4>
+        <img src="{{ uploaded_image_url }}" width="300px" style="border:1px solid #ccc; padding:5px;">
+    </div>
+{% endif %}
+{% endblock %}
